@@ -72,6 +72,15 @@ def main():
         elif choice == '5':
             show_catalog()
 
+            weapon = input("กรอกอาวุธ :")
+            name = input("กรอกชื่อ :")
+
+            result = equip_item(name, weapon)
+            if result == True:
+                print("ซื้อเรียบร้อย")
+            else:
+                print(result)
+
         # ---------- เมนู 6 (OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")

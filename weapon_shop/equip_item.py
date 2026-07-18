@@ -31,6 +31,12 @@ def equip_item(person,weapon):
     Moneyperson = get_money(person)
     Weaponperson = get_weapon(person)
     Weaponprice = get_weapon_price(weapon)
+
+    if (Weaponprice == None):
+        return "ไม่เจออาวุธ"
+    if (Moneyperson == None):
+        return "ไม่เจอคน"
+
     if (Weaponperson != "ไม่มี"):
         CanBuy = False
         return "ใส่เพิ่มไม่ได้"
