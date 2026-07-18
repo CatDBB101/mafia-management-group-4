@@ -38,6 +38,7 @@ def equip_item(person,weapon):
         CanBuy = False
         return "ซื้อไม่ได้"
     if (CanBuy):
+
         Decrease_Money(person,Weaponprice)
         for weapon_id, details in data.weapons_catalog.items():
             if details["name"] == weapon:
@@ -47,7 +48,8 @@ def equip_item(person,weapon):
                     member['equipment'] = weapon
                     member['power'] += Bonuspoint
                     MemberPoint = member['power']
+        print("Buy Success")
+                    
     return True
 
     
-print(equip_item("Tony","สนับมือ"))
