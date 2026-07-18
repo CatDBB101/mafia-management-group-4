@@ -1,19 +1,53 @@
-# =====================================================
-#  weapon_shop/equip_item.py — คนรับผิดชอบ: ______________________
-# =====================================================
-
+import data
 # TODO: สร้างฟังก์ชัน equip_item(person, weapon)
 #   - เช็คเงิน: เงินของ person ไม่พอราคา weapon -> ซื้อไม่ได้
 #   - เช็คอาวุธ: person มีอาวุธอยู่แล้ว (equipment ไม่ใช่ "ไม่มี") -> ใส่เพิ่มไม่ได้
 #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
 #   - return {"status": True/False, "message": ข้อความบอกผล}
+def get_money(person):
+    for member in data.family_members:
+        if member["name"] == person:
+            return member['money']
+
+def get_weapon(person):
+    for member in data.family_members:
+        if member["name"] == person:
+            return member['equipment']
+
+def get_weapon_price(nameweapon):
+    for weapon_id, details in data.weapons_catalog.items():
+        if details["name"] == nameweapon:
+            return details["price"]
+
+def Decrease_Money(person,price):
+    for member in data.family_members:
+        if member["name"] == person:
+            member['money'] -= price
 
 
-# ทดสอบ: python -m weapon_shop.equip_item
-if __name__ == "__main__":
-    vito = {"name": "Vito", "money": 60000, "power": 5, "equipment": "ไม่มี"}
-    gun = {"name": "ปืนพก 9mm", "price": 50000, "bonus": 5}
+def equip_item(person,weapon):
+    CanBuy = True
+    MemberPoint = 0
+    Moneyperson = get_money(person)
+    Weaponperson = get_weapon(person)
+    Weaponprice = get_weapon_price(weapon)
+    if (Weaponperson != "ไม่มี"):
+        CanBuy = False
+        return "ใส่เพิ่มไม่ได้"
+    if (Weaponprice > Moneyperson):
+        CanBuy = False
+        return "ซื้อไม่ได้"
+    if (CanBuy):
+        Decrease_Money(person,Weaponprice)
+        for weapon_id, details in data.weapons_catalog.items():
+            if details["name"] == weapon:
+                Bonuspoint =  details["bonus"]
+        for member in data.family_members:
+            if member["name"] == person:
+                    member['equipment'] = weapon
+                    member['power'] += Bonuspoint
+                    MemberPoint = member['power']
+    return True
 
-    print(equip_item(vito, gun))   # ต้องได้ status True
-    print(vito)                    # เงินเหลือ 10000, power เป็น 10, equipment เป็นปืน
-    print(equip_item(vito, gun))   # ครั้งที่สองต้องได้ status False (มีอาวุธแล้ว)
+    
+print(equip_item("Tony","สนับมือ"))
