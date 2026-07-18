@@ -14,7 +14,7 @@ from personnel.search_member import search_member
 from personnel.remove_member import remove_member
 from weapon_shop.show_catalog import show_catalog
 from weapon_shop.equip_item import equip_item
-# from missions.send_mission import send_mission
+from missions.send_mission import send_mission
 
 def main():
     while True:
@@ -84,9 +84,7 @@ def main():
         # ---------- เมนู 6 (OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")
-            # TODO: รับชื่อ -> search_member() -> send_mission()
-            #       -> สำเร็จ: print เงินรางวัล + ยอดเงินปัจจุบัน | ล้มเหลว: remove_member() + print ถูกลบ
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            send_mission()
 
         elif choice == '7':
             print("ปิดระบบ...")
