@@ -14,7 +14,7 @@ from personnel.search_member import search_member
 from personnel.remove_member import remove_member
 from weapon_shop.show_catalog import show_catalog
 from weapon_shop.equip_item import equip_item
-from missions.send_mission import send_mission
+# from missions.send_mission import send_mission
 
 def main():
     while True:
@@ -32,34 +32,46 @@ def main():
         # ---------- เมนู 1 ----------
         if choice == '1':
             print("\n--- เพิ่มลูกน้องใหม่ ---")
+            name = input("name :")
+            age = int(input("age :"))
+            role = input("power :")
+            power = int(input("power :"))
+            money = float(input("money :"))
+
+            add_member(name, age, role, power, money)
             # TODO: รับ name, age, power, money (age/power ใช้ int(), money ใช้ float())
             #       -> add_member(...) -> print เพิ่ม (ชื่อ) ในตำแหน่ง (role) เรียบร้อยแล้ว
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            print("เพิ่มสมาชิกใหม่เรียบร้อย")
 
         # ---------- เมนู 2 ----------
         elif choice == '2':
             print("\n--- รายชื่อลูกน้องทั้งหมด ---")
+            show_members()
             # TODO: เรียก show_members()
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
 
         # ---------- เมนู 3 ----------
         elif choice == '3':
             print("\n--- ค้นหาประวัติ ---")
+            name = input("name :")
+            target_data = search_member(name)
+            if target_data == None:
+                print("ไม่เจอข้อมูลสมาชิก")
+            else:
+                print(target_data)
             # TODO: รับชื่อ -> search_member() -> เจอ: print ข้อมูล | ไม่เจอ: print ไม่พบชื่อในระบบ
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
 
         # ---------- เมนู 4 ----------
         elif choice == '4':
-            print("\n--- สั่งเก็บลูกน้อง ---")
-            # TODO: รับชื่อ -> remove_member() -> True: print สั่งเก็บเรียบร้อย | False: print ไม่พบชื่อในระบบ
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            name = input("name :")
+            result = remove_member(name)
+            if (result):
+                print(f"กำจัด {name} เรียบร้อย")
+            else:
+                print(f"ไม่เจอสมาชิกชื่อ {name}")
 
         # ---------- เมนู 5 ----------
         elif choice == '5':
-            print("\n=== คลังอาวุธ ===")
-            # TODO: show_catalog() -> รับรหัสอาวุธ (หาใน weapons_catalog) -> รับชื่อคน (search_member())
-            #       -> equip_item() -> print ข้อความผล และถ้าสำเร็จ print ค่าพลังใหม่
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            show_catalog()
 
         # ---------- เมนู 6 (OPTIONAL) ----------
         elif choice == '6':

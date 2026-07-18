@@ -8,9 +8,9 @@ from data import family_members
 #   - สร้าง dict สมาชิกใหม่ (key: name, age, role, power, money, equipment เริ่มต้น "ไม่มี")
 #   - เพิ่มเข้า family_members แล้ว return dict นั้น
 
-def add_member(name, age, role, power):
+def add_member(name, age, role, power, money):
     family_members.append({
-        "name" : name, "age" : age, "role" : role, "power" : power
+        "name" : name, "age" : age, "role" : role, "power" : power, "money" : money, "equipment" : "ไม่มี"
     })
 
 # ทดสอบ: python -m personnel.add_member
