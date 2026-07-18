@@ -34,11 +34,10 @@ def main():
             print("\n--- เพิ่มลูกน้องใหม่ ---")
             name = input("name :")
             age = int(input("age :"))
-            role = input("power :")
             power = int(input("power :"))
             money = float(input("money :"))
 
-            add_member(name, age, role, power, money)
+            add_member(name, age, power, money)
             # TODO: รับ name, age, power, money (age/power ใช้ int(), money ใช้ float())
             #       -> add_member(...) -> print เพิ่ม (ชื่อ) ในตำแหน่ง (role) เรียบร้อยแล้ว
             print("เพิ่มสมาชิกใหม่เรียบร้อย")
