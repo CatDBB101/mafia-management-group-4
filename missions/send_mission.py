@@ -29,7 +29,7 @@ def add_Money(person,price):
 def show_mission():
     for num in list_mission:
         listt = list_mission[num]
-        print(f"{num},{listt['mission_name']},{listt['power_need']},{listt['reward']}")
+        print(f"{num},'Mission Name : ',{listt['mission_name']},'Power Need :',{listt['power_need']},'Reward : ',{listt['reward']}")
     choose_choice = input("Choose 1 - 3 : ")
     for num in list_mission:
          if (choose_choice == num):
@@ -57,7 +57,7 @@ def send_mission():
                         return {"status": True, "reward": powermission['reward']}
         
 
-# # ทดสอบ: python3 -m missions.send_mission
+# ทดสอบ: python3 -m missions.send_mission
 # if __name__ == "__main__":
 #      print(send_mission("fsafasf"))
 

@@ -84,7 +84,7 @@ def main():
         # ---------- เมนู 6 (OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")
-            send_mission()
+            print(send_mission())
 
         elif choice == '7':
             print("ปิดระบบ...")
