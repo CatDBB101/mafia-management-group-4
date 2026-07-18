@@ -9,7 +9,7 @@ def show_catalog():
  for num in weapons_catalog:
   
   weapons = weapons_catalog[num]
-  print(f"{weapons["name"]},{weapons["bonus"]},{weapons["price"]}")
+  print(f"{num},{weapons["name"]},{weapons["price"]},{weapons["bonus"]}")
 
 # ทดสอบ: python -m weapon_shop.show_catalog
 if __name__ == "__main__":
